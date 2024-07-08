@@ -15,8 +15,7 @@ public class Main {
                 System.out.println("Result: " + result);
             } while (calculateAgain(scanner));
             System.out.println("Thank you for Using the Calculator");
-
-            } finally {
+        } finally {
             scanner.close();
         }
     }
@@ -31,8 +30,10 @@ public class Main {
                 num = scanner.nextFloat();
                 validInput = true;
             } catch (InputMismatchException e) {
-                System.out.println("Invalid input. Please enter a valid number.");
-                scanner.next(); 
+                System.out.println(
+                    "Invalid input. Please enter a valid number."
+                );
+                scanner.next();
             }
         }
 
@@ -46,15 +47,22 @@ public class Main {
         while (!validInput) {
             System.out.print("Enter an operator (+, -, *, /): ");
             operator = scanner.next();
-            if (operator.equals("+") || operator.equals("-") || operator.equals("*") || operator.equals("/")) {
+            if (
+                operator.equals("+") ||
+                operator.equals("-") ||
+                operator.equals("*") ||
+                operator.equals("/")
+            ) {
                 validInput = true;
                 return operator;
             } else {
-                System.out.println("Invalid operator. Please enter one of +, -, *, /.");
+                System.out.println(
+                    "Invalid operator. Please enter one of +, -, *, /."
+                );
             }
         }
 
-        return null; 
+        return null;
     }
 
     private static float calculate(float num1, float num2, String operator) {
@@ -68,11 +76,13 @@ public class Main {
             case "/":
                 if (num2 == 0) {
                     System.out.println("Cannot divide by zero");
-                    return Float.NaN; 
+                    return Float.NaN;
                 }
                 return num1 / num2;
             default:
-                throw new IllegalArgumentException("Invalid operator: " + operator);
+                throw new IllegalArgumentException(
+                    "Invalid operator: " + operator
+                );
         }
     }
 
@@ -91,6 +101,6 @@ public class Main {
             }
         }
 
-        return false; 
+        return false;
     }
 }
