@@ -1,12 +1,16 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Main {
+public class Main
+{
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         Scanner scanner = new Scanner(System.in);
-        try {
-            do {
+        try
+        {
+            do
+            {
                 float num1 = getNumber(scanner);
                 String operator = getOperator(scanner);
                 float num2 = getNumber(scanner);
@@ -15,21 +19,27 @@ public class Main {
                 System.out.println("Result: " + result);
             } while (calculateAgain(scanner));
             System.out.println("Thank you for Using the Calculator");
-        } finally {
+        }
+        finally
+        {
             scanner.close();
         }
     }
 
-    private static float getNumber(Scanner scanner) {
+    private static float getNumber(Scanner scanner)
+    {
         float num = 0;
         boolean validInput = false;
 
-        while (!validInput) {
+        while (!validInput)
+        {
             System.out.print("Enter a number: ");
-            try {
+            try
+            {
                 num = scanner.nextFloat();
                 validInput = true;
-            } catch (InputMismatchException e) {
+            } catch (InputMismatchException e)
+            {
                 System.out.println(
                     "Invalid input. Please enter a valid number."
                 );
@@ -40,11 +50,13 @@ public class Main {
         return num;
     }
 
-    private static String getOperator(Scanner scanner) {
+    private static String getOperator(Scanner scanner)
+    {
         String operator;
         boolean validInput = false;
 
-        while (!validInput) {
+        while (!validInput)
+        {
             System.out.print("Enter an operator (+, -, *, /): ");
             operator = scanner.next();
             if (
@@ -52,10 +64,13 @@ public class Main {
                 operator.equals("-") ||
                 operator.equals("*") ||
                 operator.equals("/")
-            ) {
+            )
+            {
                 validInput = true;
                 return operator;
-            } else {
+            }
+            else
+            {
                 System.out.println(
                     "Invalid operator. Please enter one of +, -, *, /."
                 );
@@ -65,8 +80,10 @@ public class Main {
         return null;
     }
 
-    private static float calculate(float num1, float num2, String operator) {
-        switch (operator) {
+    private static float calculate(float num1, float num2, String operator)
+    {
+        switch (operator)
+        {
             case "+":
                 return num1 + num2;
             case "-":
@@ -74,7 +91,8 @@ public class Main {
             case "*":
                 return num1 * num2;
             case "/":
-                if (num2 == 0) {
+                if (num2 == 0)
+                {
                     System.out.println("Cannot divide by zero");
                     return Float.NaN;
                 }
@@ -86,17 +104,22 @@ public class Main {
         }
     }
 
-    private static boolean calculateAgain(Scanner scanner) {
+    private static boolean calculateAgain(Scanner scanner)
+    {
         char choice;
         boolean validInput = false;
 
-        while (!validInput) {
+        while (!validInput)
+        {
             System.out.print("Do you want to calculate again? (y/n): ");
             choice = scanner.next().toLowerCase().charAt(0);
-            if (choice == 'y' || choice == 'n') {
+            if (choice == 'y' || choice == 'n')
+            {
                 validInput = true;
                 return choice == 'y';
-            } else {
+            }
+            else
+            {
                 System.out.println("Invalid input. Please enter 'y' or 'n'.");
             }
         }
